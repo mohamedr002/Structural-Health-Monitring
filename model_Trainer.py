@@ -1,6 +1,7 @@
 import torch.nn as nn
 from models.models_config import get_model_config, initlize
 from pre_train_test_split import trainer
+from models.Models import *
 import torch
 from torch.utils.data import DataLoader
 from utils import *
@@ -51,7 +52,7 @@ class CNN_1D(nn.Module):
         return predictions, features
 
 model=CNN_1D(1,32,0.5).to(device)
-
+model = LSTM_SHM()
 
 params = {'window_length': 30, 'sequence_length': 30, 'batch_size': 10, 'input_dim': 14, 'pretrain_epoch': 40,
           'data_path': r"C:/Users/mohamedr002/OneDrive - Nanyang Technological University/PhD Codes Implementation/Deep Learning for RUL/data/processed_data/cmapps_train_test_cross_domain.pt",
