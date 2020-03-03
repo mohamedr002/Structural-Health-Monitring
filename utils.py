@@ -16,9 +16,10 @@ from torch.utils.data import Dataset
 
 class MyDataset(Dataset):
     def __init__(self, data, labels):
+        super(MyDataset, self).__init__()
         """Reads source and target sequences from processing file ."""
-        self.input_tensor = data
-        self.label = labels
+        self.input_tensor = torch.from_numpy(data)
+        self.label = torch.from_numpy(labels)
         self.num_total_seqs = len(self.input_tensor)
     def __getitem__(self, index):
         """Returns one data pair (source and target)."""
